@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const NavItems = [
     'Home',
     'Projects',
@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between md:items-center px-10 py-8 md:px-16 md:py-6">
+      <nav className="flex justify-between md:items-center px-6 py-8 md:px-16 md:py-6 relative">
         {/* image */}
         <div className="h-3 w-3 p-5 bg-indigo-500 rounded-lg text-lg font-bold flex justify-center items-center text-gray-300">
           AL
@@ -49,9 +49,18 @@ const Navbar = () => {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative md:hidden mb-0"
+          className="relative md:hidden mb-0 w-8 h-8  flex justify-center items-center z-10"
         >
-          {isOpen ? 'X' : '+'}
+          <span
+            className={`h-0.5 w-6 bg-orange-500 transition-transform duration-1000 ease-in-out absolute
+            ${isOpen ? 'rotate-45' : 'rotate-0'}
+            `}
+          />
+          <span
+            className={`h-0.5 w-6 bg-orange-500 transition-transform duration-1000 ease-in-out absolute
+            ${isOpen ? '-rotate-45' : 'rotate-90'}
+            `}
+          />
         </button>
 
         {/* buttons */}
@@ -66,13 +75,22 @@ const Navbar = () => {
       </nav>
 
       {/* mobile list */}
-      {isOpen && (
-        <ul className="absolute right-0 px-8 mx-auto  border bg-gray-300 w-full p">
+      <div className=" flex justify-center p-20">
+        {/* {isOpen && ( */}
+        <ul
+          className={`flex flex-col gap-1 
+          md:hidden absolute top-0 bg-gray-300/50 w-90 px-6 py-3 space-y-2
+          transition-all duration-1000 ease-in-out
+          ${isOpen ? 'translate-y-20 opacity-100' : 'translte-y-0 opacity-0'}`}
+        >
           {NavItems.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index} className="w-full text-lg font-semibold">
+              {item}
+            </li>
           ))}
         </ul>
-      )}
+        {/* )} */}
+      </div>
     </>
   );
 };
