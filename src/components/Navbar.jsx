@@ -13,16 +13,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between md:items-center px-6 py-8 md:px-16 md:py-6 relative">
+      <nav className="flex md:justify-around justify-between px-6 py-8 items-center md:py-6  relative">
         {/* image */}
-        <div className="h-3 w-3 p-5 bg-indigo-500 rounded-lg text-lg font-bold flex justify-center items-center text-gray-300">
+        <div className="h-3 w-3 p-5 bg-c1 rounded-lg text-lg font-bold flex justify-center items-center text-gray-300">
           AL
         </div>
 
         {/* Desktop nav list */}
-        <ul className="hidden md:flex lg:flex gap-8 font-medium text-gray-800 ">
+        <div className="hidden md:flex lg:flex items-center gap-8 justify-between font-medium text-gray-800 ">
           {NavItems.map((item, index) => (
-            <li
+            <a
               className="cursor-pointer 
             relative
             after:absolute
@@ -43,35 +43,28 @@ const Navbar = () => {
               key={index}
             >
               {item}
-            </li>
+            </a>
           ))}
-        </ul>
+        </div>
+        <button className="hidden md:flex bg-c2 px-4 py-2 font-medium rounded-lg text-white">
+          Join Community
+        </button>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="relative md:hidden mb-0 w-8 h-8  flex justify-center items-center z-10"
         >
           <span
-            className={`h-0.5 w-6 bg-orange-500 transition-transform duration-1000 ease-in-out absolute
+            className={`h-0.5 w-6 bg-c2 transition-transform duration-1000 ease-in-out absolute
             ${isOpen ? 'rotate-45' : 'rotate-0'}
             `}
           />
           <span
-            className={`h-0.5 w-6 bg-orange-500 transition-transform duration-1000 ease-in-out absolute
+            className={`h-0.5 w-6 bg-c2 transition-transform duration-1000 ease-in-out absolute
             ${isOpen ? '-rotate-45' : 'rotate-90'}
             `}
           />
         </button>
-
-        {/* buttons */}
-        {/* <div className="flex gap-4">
-        <button className="border-2 px-4 py-2 font-medium rounded-lg">
-          GitHub
-        </button>
-        <button className="bg-indigo-600 px-4 py-2 font-medium rounded-lg">
-          Join Community
-        </button>
-      </div> */}
       </nav>
 
       {/* mobile list */}
