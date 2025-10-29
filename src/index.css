@@ -5,8 +5,7 @@ body {
 }
 
 @theme {
-  /* --color-c1: #310a69; */
-  /* --color-c2: #d41414; */
   --color-c1: indigo;
-  --color-c2: orange;
+  /* --color-c2: orange; */
+  --color-c2: #db6e0f;
 }

@@ -33,7 +33,7 @@ const Navbar = () => {
             relative
             after:absolute
             after:left-0
-            after:-bottom-2
+            after:-bottom-1
             ${
               activeLink === links.href
                 ? 'after:w-full text-neutral-900  after:opacity-100 after:scale-x-100'
